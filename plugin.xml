@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="cordova-plugin-image-edit" version="0.1.0">
+
+  <name>ImageEdit</name>
+  <engines>
+    <engine name="cordova-android" version=">=6.4.0" />
+  </engines>
+  <asset src="www/imageEdit.js" target="js/imageEdit.js"/>
+  <js-module src="www/imageEdit.js" name="imageEdit">
+    <clobbers target="imageEdit" />
+  </js-module>
+
+
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="ImageEdit">
+        <param name="android-package" value="com.bendspoons.plugin.imageedit.ImageEdit"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity android:name="com.bendspoons.plugin.imageedit.TouchDrawActivity" android:configChanges="orientation|screenSize" ></activity>
+    </config-file>
+
+    <source-file src="src/android/ImageEdit.java" target-dir="src/com/bendspoons/plugin/imageedit/" />
+    <source-file src="src/android/TouchDrawActivity.java" target-dir="src/com/bendspoons/plugin/imageedit" />
+  </platform>
+
+</plugin>
