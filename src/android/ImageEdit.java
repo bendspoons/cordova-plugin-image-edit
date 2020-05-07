@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import com.bendspoons.plugin.imageedit.TouchDrawActivity;
+import com.bendspoons.plugin.imageedit.ImageEditActivity;
 
 /**
  * Created by jt on 29/03/16.
@@ -72,7 +72,7 @@ public class ImageEdit extends CordovaPlugin {
         this.cordova.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
-                final Intent touchDrawIntent = new Intent(ImageEdit.this.cordova.getActivity(), TouchDrawActivity.class);
+                final Intent touchDrawIntent = new Intent(ImageEdit.this.cordova.getActivity(), ImageEditActivity.class);
 
                 LOG.e(TAG, "ImageEdit.this.sourceData = " + ImageEdit.this.sourceData);
                 LOG.e(TAG, "ImageEdit.this.sourceType = " + ImageEdit.this.sourceType);
@@ -94,9 +94,9 @@ public class ImageEdit extends CordovaPlugin {
                         //  The Cordova camera plugin can sometimes return a content URI instead of a file URI
                         //  when the image is selected from the photo gallery.
                         //
-                        //  However, the TouchDrawActivity can only accept a file URI or a data URI for the
+                        //  However, the ImageEditActivity can only accept a file URI or a data URI for the
                         //  background image. So, we need to read the background image data and pass it in a
-                        //  format which can be handled by the TouchDrawActivity.
+                        //  format which can be handled by the ImageEditActivity.
 
                         InputStream inStream = null;
                         try {
@@ -177,6 +177,8 @@ public class ImageEdit extends CordovaPlugin {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, final Intent intent) {
+        LOG.e("ActivityResult", ""+resultCode);
+
         if (resultCode == Activity.RESULT_CANCELED) {
             this.callbackContext.success("");
             return;
@@ -192,12 +194,12 @@ public class ImageEdit extends CordovaPlugin {
             return;
         }
 
-        if (resultCode == TouchDrawActivity.RESULT_TOUCHDRAW_ERROR) {
+        if (resultCode == ImageEditActivity.RESULT_TOUCHDRAW_ERROR) {
             Bundle extras = intent.getExtras();
             String errorMessage = "Failed to generate ImageEdit.";
 
             if (extras != null) {
-                errorMessage += " " + extras.getString(TouchDrawActivity.DRAWING_RESULT_ERROR);
+                errorMessage += " " + extras.getString(ImageEditActivity.DRAWING_RESULT_ERROR);
             }
 
             this.callbackContext.error(errorMessage);
@@ -223,8 +225,8 @@ public class ImageEdit extends CordovaPlugin {
         try {
             String ext = "";
 
-            //ext = "jpeg";
-            ext = "png";
+            ext = "jpeg";
+            //ext = "png";
 
 
             String fileName = String.format("sketch-%s.%s", UUID.randomUUID(), ext);

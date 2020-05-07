@@ -18,11 +18,72 @@
       </feature>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-        <activity android:name="com.bendspoons.plugin.imageedit.TouchDrawActivity" android:configChanges="orientation|screenSize" ></activity>
+        <activity android:name="com.bendspoons.plugin.imageedit.ImageEditActivity" android:configChanges="orientation|screenSize" ></activity>
     </config-file>
 
     <source-file src="src/android/ImageEdit.java" target-dir="src/com/bendspoons/plugin/imageedit/" />
-    <source-file src="src/android/TouchDrawActivity.java" target-dir="src/com/bendspoons/plugin/imageedit" />
+    <source-file src="src/android/ImageEditActivity.java" target-dir="src/com/bendspoons/plugin/imageedit" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_cancel.png" target="res/drawable-hdpi/ic_action_cancel.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_cancel.png" target="res/drawable-mdpi/ic_action_cancel.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_cancel.png" target="res/drawable-xhdpi/ic_action_cancel.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_cancel.png" target="res/drawable-xxhdpi/ic_action_cancel.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_cancel.png" target="res/drawable-xxxhdpi/ic_action_cancel.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_crop.png" target="res/drawable-hdpi/ic_action_crop.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_crop.png" target="res/drawable-mdpi/ic_action_crop.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_crop.png" target="res/drawable-xhdpi/ic_action_crop.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_crop.png" target="res/drawable-xxhdpi/ic_action_crop.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_crop.png" target="res/drawable-xxxhdpi/ic_action_crop.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_filter.png" target="res/drawable-hdpi/ic_action_filter.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_filter.png" target="res/drawable-mdpi/ic_action_filter.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_filter.png" target="res/drawable-xhdpi/ic_action_filter.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_filter.png" target="res/drawable-xxhdpi/ic_action_filter.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_filter.png" target="res/drawable-xxxhdpi/ic_action_filter.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_greyscale.png" target="res/drawable-hdpi/ic_action_greyscale.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_greyscale.png" target="res/drawable-mdpi/ic_action_greyscale.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_greyscale.png" target="res/drawable-xhdpi/ic_action_greyscale.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_greyscale.png" target="res/drawable-xxhdpi/ic_action_greyscale.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_greyscale.png" target="res/drawable-xxxhdpi/ic_action_greyscale.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_rotate.png" target="res/drawable-hdpi/ic_action_rotate.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_rotate.png" target="res/drawable-mdpi/ic_action_rotate.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_rotate.png" target="res/drawable-xhdpi/ic_action_rotate.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_rotate.png" target="res/drawable-xxhdpi/ic_action_rotate.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_rotate.png" target="res/drawable-xxxhdpi/ic_action_rotate.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_save.png" target="res/drawable-hdpi/ic_action_save.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_save.png" target="res/drawable-mdpi/ic_action_save.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_save.png" target="res/drawable-xhdpi/ic_action_save.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_save.png" target="res/drawable-xxhdpi/ic_action_save.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_save.png" target="res/drawable-xxxhdpi/ic_action_save.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_sharp.png" target="res/drawable-hdpi/ic_action_sharp.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_sharp.png" target="res/drawable-mdpi/ic_action_sharp.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_sharp.png" target="res/drawable-xhdpi/ic_action_sharp.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_sharp.png" target="res/drawable-xxhdpi/ic_action_sharp.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_sharp.png" target="res/drawable-xxxhdpi/ic_action_sharp.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_sw.png" target="res/drawable-hdpi/ic_action_sw.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_sw.png" target="res/drawable-mdpi/ic_action_sw.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_sw.png" target="res/drawable-xhdpi/ic_action_sw.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_sw.png" target="res/drawable-xxhdpi/ic_action_sw.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_sw.png" target="res/drawable-xxxhdpi/ic_action_sw.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_tick.png" target="res/drawable-hdpi/ic_action_tick.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_tick.png" target="res/drawable-mdpi/ic_action_tick.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_tick.png" target="res/drawable-xhdpi/ic_action_tick.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_tick.png" target="res/drawable-xxhdpi/ic_action_tick.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_tick.png" target="res/drawable-xxxhdpi/ic_action_tick.png" />
+
+    <resource-file src="src/android/res/drawable-hdpi/ic_action_trash.png" target="res/drawable-hdpi/ic_action_trash.png" />
+    <resource-file src="src/android/res/drawable-mdpi/ic_action_trash.png" target="res/drawable-mdpi/ic_action_trash.png" />
+    <resource-file src="src/android/res/drawable-xhdpi/ic_action_trash.png" target="res/drawable-xhdpi/ic_action_trash.png" />
+    <resource-file src="src/android/res/drawable-xxhdpi/ic_action_trash.png" target="res/drawable-xxhdpi/ic_action_trash.png" />
+    <resource-file src="src/android/res/drawable-xxxhdpi/ic_action_trash.png" target="res/drawable-xxxhdpi/ic_action_trash.png" />
+
   </platform>
 
 </plugin>
