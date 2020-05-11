@@ -5,7 +5,9 @@
 - Quite nice UI, Colors and Icons
 - all Descriptions/Labels are in German
 - **!! under active Development !!**
-- **!! Currently the Callback Data is _NOT_ consistent between iOS and Android, im working on it !!**
+- **!! Currently the Callback Data is _NOT_ consistent between iOS and Android, im working on it !!**#
+
+*DISCLAIMER: This plugin was  created for editing Scans/Photos of Documents, not regular Photos. It works anyways, but some functions, like the BlackWhite, were adjusted to work good with Documents and not a Photo of a nice sunset or whatever...*
 
 ## Installation ##
 
