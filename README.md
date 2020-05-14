@@ -16,21 +16,39 @@
 ## Usage ##
 
     imageEdit.edit(function(success) {
-     console.log('Edited Image Source: ' + success);
-    
+		// success.code = 201
+		// success.result = "SUCCESS"
+		// success.path = Path to created/edited Image
     }, function(error) {
-     alert('Failed because: ' + error);
+    	// error.code = INT
+		// error.result = STRING
     }, {
-     'sourceData': 'file:///storage/emulated/.../image.jpg',
-     'sourceType': 'file'
-     //'sourceData': 'data:image/jpg;base64,iVBORw0....',
-     //'sourceType': 'base64'
+		'sourceData'       : 'file:///path/to/image.jpg',
+		'sourceType'       : 'file',
+		'destType'         : 'png', 	// OPTIONAL - jpg/png, default jpg
+		'allowCrop'        : 1, 		// OPTIONAL - 1 or 0, default 1
+		'allowRotate'      : 1, 		// OPTIONAL - 1 or 0, default 1
+		'allowFilter'      : 1  		// OPTIONAL - 1 or 0, default 1
     });
 
+
+Success Code:
+
+    - 201 / SUCCESS
+
+Possible Error Codes:
+
+    - 101 / ABORTED
+    - 401 / ERROR_OPTION_INPUTDATA_NOTEXISTS
+    - 501 / ERROR_OPTION_INPUTTYPE
+    - 502 / ERROR_OPTION_INPUTDATA_EMPTY
+    - 503 / ERROR_OPTION_INPUTDATA_BASE64
 
 Returns fully qualified image path like file:///saved/to/path/filename.jpg
 
 base64 mode is not recommended, its likely the app will crash unless you hand over a really small image on Adnroid (prbably remove this whole base64 chunk because i do not need it anymore, and you can always save the base64 data to file and use this plugin with that saved file... amiright?!)
+
+*--> Conclusion: i will definitly remove the buggy base64 functionality*
 
 ## Edit options ##
 
@@ -56,12 +74,12 @@ in 90° steps (on iOS with additinal UISlider)
 ## Example with Camera ##
 
     navigator.camera.getPicture(function(cameraPicturePath) {
-      	console.log('Camera Picture Path: ' + success);
+      	console.log('Camera Picture Path: ' + success.path);
 
       	imageEdit.edit(function(editedImagePath) {
      		console.log('Edited Image Path: ' + editedImagePath);   
       	}, function(error) {
-     		alert('Failed because: ' + error);
+     		alert('Failed because: ' + JSON.stringify(error);
       	}, {
      		sourceData: cameraPicturePath,
      		sourceType: 'file'
