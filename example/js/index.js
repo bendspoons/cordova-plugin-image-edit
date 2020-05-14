@@ -27,25 +27,27 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+        /*
+        setTimeout(function() {
+            //var success =  cordova.file.applicationStorageDirectory + 'img/beleg.jpeg';
+            var success =  'img/beleg.jpeg';
+           console.log('load image from www' + success)
+           $('#cameraImage').attr('src', success);
+           $('#cameraImage').attr('alt', success);
+           $('#cameraImage').attr('title', success);
+           $('#cameraImageSrc').html(success);
+           $('.show-when-image').show();
+        }, 3000);
+        */
     },
 
     camera: function() {
-      navigator.camera.getPicture(function(imageData) {
-         var image = document.getElementById('cameraImage');
-         image.src = imageData;
+      navigator.camera.getPicture(function(success) {
+        console.log('Camera Source: ' + success);
+
+        $('#cameraImage').attr('src', success);
+        $('#cameraImageSrc').html(success);
+        $('.show-when-image').show();
       }, function(message) {
          alert('Failed because: ' + message);
       }, {
@@ -56,13 +58,68 @@ var app = {
 
     editImage: function() {
       imageEdit.edit(function(success) {
-         var image = document.getElementById('editedImage');
-         image.src = success;
+        console.log('Edited Image Source: ', JSON.stringify(success));
+        alert('Edited Image Source: ' + JSON.stringify(success));
+
+         $('#editedImage').attr('src', success.path);
+         $('#editedImageSrc').html(JSON.stringify(success));
+         $('.show-when-edited').show();
       }, function(error) {
-         alert('Failed because: ' + error);
+        console.log('Failed because: ', JSON.stringify(error));
+        alert('Failed because: ' + JSON.stringify(error));
       }, {
-         'sourceData': document.getElementById('cameraImage').src,
-         'sourceType': 'file'
+         'sourceData'       : $('#cameraImage').attr('src'),
+         'sourceType'       : 'file',
+         //'destType'         : 'png', // jpg or png, default jpg
+         //'allowCrop'        : 1, // 1 or 0, default 1
+         //'allowRotate'      : 1, // 1 or 0, default 1
+         //'allowFilter'      : 1 // 1 or 0, default 1
+      });
+    },
+
+    setBasicImage: function() {
+      var success = 'file:///storage/emulated/0/Android/data/com.bendspoons.imageedit/cache/1588864986783.jpg';
+       console.log('Edited Image Source: ' + success);
+       $('#cameraImage').attr('src', success);
+       $('#cameraImageSrc').html(success);
+       $('.show-when-image').show();
+    },
+
+    setPickImage: function() {
+        window.imagePicker.getPictures(function(results) {
+
+            var imgSrc = 'file://' + results[0];
+            console.log('Edited Image Source: ' + imgSrc);
+            $('#cameraImage').attr('src', imgSrc);
+            $('#cameraImageSrc').html(imgSrc);
+            $('.show-when-image').show();
+
+            for (var i = 0; i < results.length; i++) {
+                console.log('Image URI: ' + results[i]);
+            }
+        }, function (error) {
+            console.log('Error: ' + error);
+        });
+    },
+
+    photoAndEdit: function() {
+      navigator.camera.getPicture(function(cameraPicturePath) {
+        console.log('Camera Picture Path: ' + success);
+
+        imageEdit.edit(function(editedImagePath) {
+           console.log('Edited Image Path: ' + editedImagePath);
+
+        }, function(error) {
+           alert('Failed because: ' + error);
+        }, {
+           sourceData: cameraPicturePath,
+           sourceType: 'file'
+        });
+      }, function(cameraError) {
+         alert('Camera failed because: ' + cameraError);
+      }, {
+         quality: 80,
+         destinationType: Camera.DestinationType.FILE_URI
       });
     }
 };
